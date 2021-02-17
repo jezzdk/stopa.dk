@@ -22,12 +22,12 @@
                 <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
                     <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
                         <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
-                            <div class="flex items-center justify-between w-full md:w-auto">
+                            <div class="flex items-center justify-start w-full md:w-auto">
                                 <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
                                     <span class="sr-only">dev.stopa.dk</span>
                                     <span class="text-indigo-600">dev</span><span class="text-gray-900 dark:text-gray-100">.stopa.dk</span>
                                 </a>
-                                <div class="hidden -mr-2 flex items-center">
+                                <div class="md:hidden -mr-2 flex items-center">
                                     <button @click="open = true" type="button" class="bg-white dark:bg-black rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-gray-100 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
                                         <span class="sr-only">Open main menu</span>
                                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -53,9 +53,9 @@
                     From: "opacity-100 scale-100"
                     To: "opacity-0 scale-95"
                 -->
-                <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right" x-show="open" @click.away="open = false">
-                    <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
-                        <div class="px-5 pt-4 flex items-center justify-between">
+                <div class="absolute top-0 inset-x-0 pt-2 transition transform origin-top-right" x-show="open" @click.away="open = false">
+                    <div class="shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        <div class="px-4 pt-4 flex items-center justify-start">
                             <div>
                                 <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
                                     <span class="sr-only">dev.stopa.dk</span>
@@ -108,14 +108,14 @@
         </div>
         <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
             {{ asset url="/assets/profile.jpg" }}
-            <img class="h-96 w-full object-cover sm:h-96 lg:h-screen lg:w-full lg:h-full" src="{{ url }}" alt="">
+            <img class="h-96 w-full object-cover md:h-screen lg:w-full lg:h-full" src="{{ url }}" alt="Jess Stopa">
             {{ /asset }}
         </div>
 
-        <div class="absolute right-6 top-6">
+        <div class="fixed z-50 right-6 top-6 p-2">
             <div class="flex justify-center items-center" x-data="{ theme: localStorage.theme || 'dark' }" x-init="() => $watch('theme', value => setTheme(theme))">
-                <div class="relative rounded-full w-12 h-6 transition duration-200 ease-linear" :class="[ theme === 'dark' ? 'bg-indigo-600' : 'bg-gray-400' ]">
-                    <label for="theme" class="absolute left-0 bg-white border mb-2 w-6 h-6 rounded-full transition transform duration-100 ease-linear cursor-pointer border-gray-400 flex justify-center items-center" :class="[theme === 'dark' ? 'translate-x-full' : 'translate-x-0']">
+                <div class="relative rounded-full w-12 h-6 transition duration-200 ease-linear" :class="[ theme === 'dark' ? 'bg-indigo-600' : 'bg-gray-300' ]">
+                    <label for="theme" class="absolute left-0 bg-white border mb-2 w-6 h-6 rounded-full transition transform duration-100 ease-linear cursor-pointer border-gray-300 flex justify-center items-center" :class="[theme === 'dark' ? 'translate-x-full' : 'translate-x-0']">
                         <template x-if="theme === 'light'">
                             <svg class="h-4" :class="[ theme === 'lights' ? 'text-indigo-600' : 'text-gray-600' ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
@@ -133,22 +133,24 @@
         </div>
     </div>
 
-    <div class="mx-auto px-2 py-32 lg:min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-900">
-        <h2 id="about-me" class="font-title text-center text-3xl md:text-5xl">About me</h2>
+    <div class="mx-auto lg:min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-900">
+        <div class="container mx-auto px-2 py-32 h-screen flex flex-col items-center">
+            <h2 id="about-me" class="font-title text-center text-3xl md:text-5xl">About me</h2>
 
-        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I love everything Laravel and Vue, and I love preaching the Laravel gospel to those willing to listen. And sometimes also the unwilling. I am a fullstack developer, and I know my way around the various javascript framework-of-the-day (Vue, React etc.). I can take your brilliant design and turn it into a fully functional web/mobile/desktop app with (relative) ease.</p>
+            <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I love everything Laravel and Vue, and I love preaching the Laravel gospel to those willing to listen. And sometimes also the unwilling. I am a fullstack developer, and I know my way around the various javascript framework-of-the-day (Vue, React etc.). I can take your brilliant design and turn it into a fully functional web/mobile/desktop app with (relative) ease.</p>
 
-        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I am a certified SCRUM master and believe that agile is the only way to go. I'm also very comfortable in a lead role, and I'm confident that my many years as a developer, is a great benefit in such a position.</p>
+            <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I am a certified SCRUM master and believe that agile is the only way to go. I'm also very comfortable in a lead role, and I'm confident that my many years as a developer, is a great benefit in such a position.</p>
 
-        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I am very motivated when it comes to things that I find interesting, and I enjoy working in an informal environment. I'm always up for a good laugh and a beer with my boss and co-workers.</p>
+            <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I am very motivated when it comes to things that I find interesting, and I enjoy working in an informal environment. I'm always up for a good laugh and a beer with my boss and co-workers.</p>
 
-        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I'm a technology hungry, byte minded code monkey, with an eagle eye for details, always trying to reach the next level.</p>
+            <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I'm a technology hungry, byte minded code monkey, with an eagle eye for details, always trying to reach the next level.</p>
 
-        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">By the way, be warned. I have quite a few tattoos. None of which will eat you. </p>
+            <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">By the way, be warned. I have quite a few tattoos. None of which will eat you. </p>
+        </div>
     </div>
 
-    <div class="px-12 py-32 lg:min-h-screen bg-gray-100 dark:bg-gray-900">
-        <div class="container mx-auto py-32">
+    <div class="lg:min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="container mx-auto px-12 py-32">
             <h2 id="experience" class="font-title text-center text-3xl md:text-5xl">Experience</h2>
         </div>
         <div class="mx-auto container flex">
