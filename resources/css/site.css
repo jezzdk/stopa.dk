@@ -1,1 +1,110 @@
-/* This is all you. */
+html {
+	scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 769px) {
+    .timeline li:before {
+        border-left: 0.2rem solid white;
+        position: absolute;
+        top: 0;
+        left: 20rem;
+        content: "";
+        height: 100%;
+        width: 1px;
+
+        @apply border-gray-200 dark:border-gray-600;
+    }
+
+    .timeline li:after {
+        border-radius: 9999px;
+        background-color: white;
+        position: absolute;
+        top: 1rem;
+        left: 20rem;
+        content: "";
+        height: 1rem;
+        width: 1rem;
+        transform: translateX(-0.4rem);
+
+        @apply bg-gray-300 dark:bg-gray-600;
+    }
+
+    .timeline li:first-child:before {
+        top: 1rem;
+    }
+
+    .timeline li:last-child:before {
+        height: 1rem;
+    }
+}
+
+.subnav li {
+    position: relative;
+    transition: all 0.3s ease-out;
+    margin-bottom: 1em;
+}
+
+.subnav li.active {
+    pointer-events: none;
+    padding-left: 1em;
+}
+
+.subnav li a {
+    display: block;
+    padding: 0;
+    transition: all 0.15s ease-out;
+}
+
+.subnav li:after {
+    content: "";
+    display: block;
+    border-top: 2px solid black;
+    height: 250px;
+    width: 20px;
+    position: absolute;
+    left: -30px;
+    top: 15px;
+}
+
+.dark .subnav li:after {
+    border-top: 2px solid white;
+}
+
+.subnav li.active:after {
+    width: 35px;
+    height: 400px;
+    top: 35px;
+}
+
+
+.subnav li a {
+    transition: height 0.3s ease-out;
+}
+
+.subnav li.active a {
+    @apply h-24 overflow-visible;
+}
+.subnav li.active a.double {
+    @apply h-40;
+}
+
+.nav__counter {
+    transition: all 0.15s ease-out;
+}
+.subnav li.active .nav__counter {
+    @apply text-2xl;
+}
+
+.nav__title {
+    transition: opacity 0.2s ease-out;
+}
+.subnav li.active .nav__title {
+    @apply opacity-100;
+}
+
+.nav__body {
+    transition: opacity 0.2s ease-out;
+}
+.subnav li.active .nav__body {
+    @apply opacity-100;
+}

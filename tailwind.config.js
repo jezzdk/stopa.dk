@@ -6,9 +6,13 @@ module.exports = {
         './content/**/*.md'
       ]
     },
-    important: true,
+    darkMode: 'class',
     theme: {
-      extend: {},
+      extend: {
+        fontFamily: {
+          title: ['Work Sans', 'sans-serif'],
+        },
+      },
     },
     variants: {},
     plugins: [],

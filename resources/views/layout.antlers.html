@@ -1,16 +1,408 @@
 <!doctype html>
 <html lang="{{ site:short_locale }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>{{ title ?? site:name }}</title>
-        <link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
-    </head>
-    <body class="bg-gray-200 font-sans leading-normal text-grey-800">
-        <div class="mx-auto px-2 h-screen flex items-center justify-center">
-            {{ template_content }}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title ?? site:name }}</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ mix src='css/tailwind.css' }}">
+</head>
+
+<body class="bg-white dark:bg-black font-sans leading-normal text-gray-800 dark:text-gray-400">
+    <div class="relative bg-white dark:bg-black overflow-hidden">
+        <div class="max-w-7xl mx-auto lg:h-screen">
+            <div x-data="{ open: false }" class="relative z-10 pb-8 bg-white dark:bg-black sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-screen lg:pb-28 xl:pb-32">
+                <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white dark:text-black transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                    <polygon points="50,0 100,0 50,100 0,100" />
+                </svg>
+
+                <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+                    <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+                        <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                            <div class="flex items-center justify-between w-full md:w-auto">
+                                <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
+                                    <span class="sr-only">dev.stopa.dk</span>
+                                    <span class="text-indigo-600">dev</span><span class="text-gray-900 dark:text-gray-100">.stopa.dk</span>
+                                </a>
+                                <div class="hidden -mr-2 flex items-center">
+                                    <button @click="open = true" type="button" class="bg-white dark:bg-black rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-gray-100 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
+                                        <span class="sr-only">Open main menu</span>
+                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:block md:ml-10 md:pr-4 md:space-x-8">
+                            <!-- We dont need a menu on desktop, give that scroll wheel a spin! -->
+                        </div>
+                    </nav>
+                </div>
+
+                <!--
+                Mobile menu, show/hide based on menu open state.
+
+                Entering: "duration-150 ease-out"
+                    From: "opacity-0 scale-95"
+                    To: "opacity-100 scale-100"
+                Leaving: "duration-100 ease-in"
+                    From: "opacity-100 scale-100"
+                    To: "opacity-0 scale-95"
+                -->
+                <div class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right" x-show="open" @click.away="open = false">
+                    <div class="rounded-lg shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        <div class="px-5 pt-4 flex items-center justify-between">
+                            <div>
+                                <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
+                                    <span class="sr-only">dev.stopa.dk</span>
+                                    <span class="text-indigo-600">dev</span><span class="text-gray-900 dark:text-gray-100">.stopa.dk</span>
+                                </a>
+                            </div>
+                            <div class="-mr-2">
+                                <button @click="open = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                    <span class="sr-only">Close main menu</span>
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
+                            <div class="px-2 pt-2 pb-3 space-y-1" role="none">
+                                <a href="#about-me" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">About Me</a>
+                                <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Experience</a>
+                                <a href="#recommendations" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Recommendations</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                    <div class="sm:text-center lg:text-left">
+                        <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl">
+                            <span class="block">Hi I'm Jess, master of</span>
+                            <span class="block text-indigo-600"><span class="typed-elememt"></span></span>
+                        </h1>
+                        <p class="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                            This site will tell you more about who I am, what I do and what I have done. Professionally that is. Don't get too excited.
+                        </p>
+                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                            <div class="rounded-md shadow">
+                                <a href="#about-me" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                    Show me more
+                                </a>
+                            </div>
+                            <div class="mt-3 sm:mt-0 sm:ml-3">
+                                <a href="https://www.youtube.com/watch?v=DLzxrzFCyOs" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                                    I'm not supposed to be here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
         </div>
-        <script src="{{ mix src='/js/site.js' }}"></script>
-    </body>
+        <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+            {{ asset url="/assets/profile.jpg" }}
+            <img class="h-96 w-full object-cover sm:h-96 lg:h-screen lg:w-full lg:h-full" src="{{ url }}" alt="">
+            {{ /asset }}
+        </div>
+
+        <div class="absolute right-6 top-6">
+            <div class="flex justify-center items-center" x-data="{ theme: localStorage.theme || 'dark' }" x-init="() => $watch('theme', value => setTheme(theme))">
+                <div class="relative rounded-full w-12 h-6 transition duration-200 ease-linear" :class="[ theme === 'dark' ? 'bg-indigo-600' : 'bg-gray-400' ]">
+                    <label for="theme" class="absolute left-0 bg-white border mb-2 w-6 h-6 rounded-full transition transform duration-100 ease-linear cursor-pointer border-gray-400 flex justify-center items-center" :class="[theme === 'dark' ? 'translate-x-full' : 'translate-x-0']">
+                        <template x-if="theme === 'light'">
+                            <svg class="h-4" :class="[ theme === 'lights' ? 'text-indigo-600' : 'text-gray-600' ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </template>
+                        <template x-if="theme === 'dark'">
+                            <svg class="h-4" :class="[ theme === 'darks' ? 'text-indigo-600' : 'text-gray-600' ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                            </svg>
+                        </template>
+                    </label>
+                    <input type="checkbox" id="theme" name="theme" class="appearance-none w-full h-full active:outline-none focus:outline-none cursor-pointer" @click="theme === 'dark' ? theme = 'light' : theme = 'dark'">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-auto px-2 py-32 lg:min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-900">
+        <h2 id="about-me" class="font-title text-center text-3xl md:text-5xl">About me</h2>
+
+        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I love everything Laravel and Vue, and I love preaching the Laravel gospel to those willing to listen. And sometimes also the unwilling. I am a fullstack developer, and I know my way around the various javascript framework-of-the-day (Vue, React etc.). I can take your brilliant design and turn it into a fully functional web/mobile/desktop app with (relative) ease.</p>
+
+        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I am a certified SCRUM master and believe that agile is the only way to go. I'm also very comfortable in a lead role, and I'm confident that my many years as a developer, is a great benefit in such a position.</p>
+
+        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I am very motivated when it comes to things that I find interesting, and I enjoy working in an informal environment. I'm always up for a good laugh and a beer with my boss and co-workers.</p>
+
+        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">I'm a technology hungry, byte minded code monkey, with an eagle eye for details, always trying to reach the next level.</p>
+
+        <p class="text-center text-lg w-full md:w-2/3 lg:w-1/2 mx-auto my-8">By the way, be warned. I have quite a few tattoos. None of which will eat you. </p>
+    </div>
+
+    <div class="px-12 py-32 lg:min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="container mx-auto py-32">
+            <h2 id="experience" class="font-title text-center text-3xl md:text-5xl">Experience</h2>
+        </div>
+        <div class="mx-auto container flex">
+            <div class="w-4/12 hidden lg:block relative">
+                <div class="lg:sticky top-1/3">
+                    <nav>
+                        <ul class="subnav w-72">
+                            <li data-target="#section1">
+                                <a href="#section1" class="h-8 overflow-hidden">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Bærnholdt</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Team Lead</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">March 2019 to February 2021</p>
+                                </a>
+                            </li>
+                            <li data-target="#section2">
+                                <a href="#section2" class="h-8 overflow-hidden">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Cubicle</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Owner</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">December 2018 to March 2019</p>
+                                </a>
+                            </li>
+                            <li data-target="#section3">
+                                <a href="#section3" class="h-8 overflow-hidden">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Kodeafdelingen</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Freelancer</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">July 2008 to November 2018</p>
+                                </a>
+                            </li>
+                            <li data-target="#section4">
+                                <a href="#section4" class="h-8 overflow-hidden">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Ziik</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Lead Developer</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">November 2017 to August 2018</p>
+                                </a>
+                            </li>
+                            <li data-target="#section5">
+                                <a href="#section5" class="h-8 overflow-hidden double">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Linkfire</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Team Lead</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0 mb-2">September 2016 to Oktober 2017</p>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Head of Internal Services</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">November 2015 to August 2016</p>
+                                </a>
+                            </li>
+                            <li data-target="#section6">
+                                <a href="#section6" class="h-8 overflow-hidden">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Cool Gray</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Backend Developer</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">November 2014 to October 2015</p>
+                                </a>
+                            </li>
+                            <li data-target="#section7">
+                                <a href="#section7" class="h-8 overflow-hidden">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Linkfire</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">CTO</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">February 2014 to October 2014</p>
+                                </a>
+                            </li>
+                            <li data-target="#section8">
+                                <a href="#section8" class="h-8 overflow-hidden double">
+                                    <span class="nav__counter text-xl text-gray-700 dark:text-gray-300">Konform</span>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Lead Developer</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0 mb-2">March 2013 to January 2014</p>
+                                    <h3 class="nav__title text-base font-semibold opacity-0 text-indigo-600 uppercase">Senior Developer</h3>
+                                    <p class="nav__body text-base text-gray-700 dark:text-gray-400 opacity-0">December 2007 to February 2013</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="w-full lg:w-8/12">
+                <section id="section1" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Bærnholdt</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Team Lead</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">March 2019 to February 2021</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section2" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Cubicle</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Owner</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">December 2018 to March 2019</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section3" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Kodeafdelingen</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Freelancer</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">July 2008 to November 2018</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section4" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Ziik</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Lead Developer</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">November 2017 to August 2018</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section5" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Linkfire</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Team Lead</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400 mb-2">September 2016 to Oktober 2017</p>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Head of Internal Services</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">November 2015 to August 2016</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section6" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Cool Gray</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Backend Developer</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">November 2014 to October 2015</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section7" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Linkfire</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">CTO</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">February 2014 to October 2014</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+
+                <section id="section8" class="relative lg:min-h-screen">
+                    <div class="lg:hidden mb-8">
+                        <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">Konform</div>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Lead Developer</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400 mb-2">March 2013 to January 2014</p>
+                        <h3 class="text-base font-semibold text-indigo-600 uppercase">Senior Developer</h3>
+                        <p class="text-base text-gray-700 dark:text-gray-400">December 2007 to February 2013</p>
+                    </div>
+                    <p class="mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras placerat erat at nunc consectetur cursus. Nullam et sapien commodo, condimentum diam at, vulputate leo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam mattis viverra ornare. Cras cursus dolor turpis, vel luctus erat vestibulum at. Vivamus ac ligula venenatis, dictum sapien id, venenatis nisl. Nulla justo ex, posuere id nulla a, semper semper erat. Maecenas eros elit, facilisis vitae ligula eu, aliquet vestibulum ex. Mauris id arcu eget felis semper aliquam. In vel diam mi. Etiam ut tempor urna. Etiam sem erat, tristique vitae libero eget, maximus porttitor nisl. Fusce pellentesque ut ante in eleifend. Curabitur non feugiat leo, in finibus lacus. Quisque sed enim leo.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <div class="mx-auto px-12 py-32 lg:min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
+        <h2 id="recommendations" class="font-title text-center text-3xl md:text-5xl">Recommendations</h2>
+
+        <div class="container mx-auto">
+            <ul class="my-16 timeline">
+                <li class="relative pb-24">
+                    <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                        <div class="text-center">
+                            <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                        </div>
+                        <div class="text-indigo-600 text-center">Martin Hyst</div>
+                    </div>
+                    <div class="relative lg:ml-96">
+                        <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                        <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                        <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                        <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                        <p>Jess has my highest recommendations.</p>
+                    </div>
+                </li>
+                <li class="relative pb-24">
+                    <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                        <div class="text-center">
+                            <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                        </div>
+                        <div class="text-indigo-600 text-center">Martin Hyst</div>
+                    </div>
+                    <div class="relative lg:ml-96">
+                        <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                        <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                        <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                        <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                        <p>Jess has my highest recommendations.</p>
+                    </div>
+                </li>
+                <li class="relative pb-24">
+                    <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                        <div class="text-center">
+                            <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                        </div>
+                        <div class="text-indigo-600 text-center">Martin Hyst</div>
+                    </div>
+                    <div class="relative lg:ml-96">
+                        <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                        <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                        <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                        <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                        <p>Jess has my highest recommendations.</p>
+                    </div>
+                </li>
+                <li class="relative pb-24">
+                    <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                        <div class="text-center">
+                            <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                        </div>
+                        <div class="text-indigo-600 text-center">Martin Hyst</div>
+                    </div>
+                    <div class="relative lg:ml-96">
+                        <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                        <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                        <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                        <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                        <p>Jess has my highest recommendations.</p>
+                    </div>
+                </li>
+                <li class="relative pb-24">
+                    <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                        <div class="text-center">
+                            <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                        </div>
+                        <div class="text-indigo-600 text-center">Martin Hyst</div>
+                    </div>
+                    <div class="relative lg:ml-96">
+                        <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                        <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                        <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                        <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                        <p>Jess has my highest recommendations.</p>
+                    </div>
+                </li>
+                <li class="relative pb-24">
+                    <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                        <div class="text-center">
+                            <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                        </div>
+                        <div class="text-indigo-600 text-center">Martin Hyst</div>
+                    </div>
+                    <div class="relative lg:ml-96">
+                        <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                        <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                        <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                        <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                        <p>Jess has my highest recommendations.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="mx-auto px-2 flex items-center justify-center bg-gray-200 dark:bg-gray-800">
+        {{ template_content }}
+    </div>
+
+    <script src="{{ mix src='/js/site.js' }}"></script>
+</body>
 </html>
