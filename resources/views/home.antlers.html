@@ -1,29 +1,303 @@
-<div class="text-center">
-    <p class="text-sm">Built with</p>
-    <div class="flex items-center">
-        <a href="https://statamic.com" title="Statamic">
-            <svg id="statamic-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 272.1" height="50">
-                <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="99.153" y1="65.596" x2="150.124" y2="205.639">
-                    <stop offset="0" stop-color="#da2fb6" />
-                    <stop offset="1" stop-color="#fe1876" />
-                </linearGradient>
-                <path d="M172.9 195.7c10.9 0 14.9-4.7 14.9-16.2v-22.4c0-10.7 5.2-16.8 10.2-19.7 1.5-.9 1.5-3 0-4-5.2-3.3-10.2-10.2-10.2-19.4V92c0-12.4-3.4-16-14.3-16H75.6c-10.9 0-14.3 3.6-14.3 16v22c0 9.2-5 16.1-10.2 19.4-1.5.9-1.5 3.1 0 4 5 2.8 10.2 8.9 10.2 19.7v22.4c0 11.5 4 16.2 14.9 16.2h96.7zm-48.6-20.5c-11.7 0-20.2-3.5-28.1-10.4-1.3-1.2-1.8-2.7-1.8-4.2 0-1.2.3-2.5 1.2-3.5L98 154c1.2-1.5 2.5-2.2 4-2.2 1.7 0 3.3.7 5 1.8 5.4 3.5 11.4 5.5 18.6 5.5 5.5 0 9.9-2.3 9.9-7 0-12.2-40.6-5.5-40.6-32.9 0-14.7 12-22.9 27.6-22.9 11 0 19.1 3.2 25.1 7 1.5 1 2.5 3 2.5 5 0 1.2-.3 2.3-1 3.3l-1.8 2.7c-1.3 1.8-2.8 2.7-4.7 2.7-1.3 0-2.7-.5-4.2-1.2-4.5-2.3-9.2-3.5-14.9-3.5-5.9 0-9.4 3.2-9.4 6.5 0 12.5 40.6 5.7 40.6 32.3 0 14.9-12 24.1-30.4 24.1z" fill="url(#a)" />
+<div class="relative bg-white dark:bg-black overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:h-screen">
+        <div x-data="{ open: false }" class="relative z-10 pb-8 bg-white dark:bg-black sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:h-screen lg:pb-28 xl:pb-32">
+            <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white dark:text-black transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+                <polygon points="50,0 100,0 50,100 0,100" />
             </svg>
-        </a>
-        <span class="text-gray-600 dark:text-gray-400 text-xl mr-2">+</span>
-        <a href="https://tailwindcss.com" title="tailwindcss">
-            <svg width="30" height="18" fill="#16BDCA">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M15 0c-4 0-6.5 2-7.5 6 1.5-2 3.25-2.75 5.25-2.25 1.141.285 1.957 1.113 2.86 2.03C17.08 7.271 18.782 9 22.5 9c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.141-.285-1.957-1.113-2.86-2.03C20.42 1.728 18.718 0 15 0zM7.5 9C3.5 9 1 11 0 15c1.5-2 3.25-2.75 5.25-2.25 1.141.285 1.957 1.113 2.86 2.03C9.58 16.271 11.282 18 15 18c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.141-.285-1.957-1.113-2.86-2.03C12.92 10.729 11.218 9 7.5 9z"></path>
-            </svg>
-        </a>
-        <span class="text-gray-600 dark:text-gray-400 text-xl mx-2">+</span>
-        <a href="https://github.com/alpinejs/alpine" title="Alpine.js">
-            <svg viewBox="0 0 45.116 22.806" xmlns="http://www.w3.org/2000/svg" height="20">
-                <g opacity=".8">
-                    <path d="M33.71 0L11.207 22.693l.113.113h22.586l11.21-11.304z" fill="#d8dee9" />
-                    <path d="M11.405 0l22.578 22.769-.039.037H11.209L0 11.502z" fill="#8ac0cf" />
-                </g>
-            </svg>
-        </a>
+
+            <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
+                <nav class="relative flex items-center justify-between sm:h-10 lg:justify-start" aria-label="Global">
+                    <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
+                        <div class="flex items-center justify-start w-full md:w-auto">
+                            <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
+                                <span class="sr-only">dev.stopa.dk</span>
+                                <span class="text-indigo-600">dev</span><span class="text-gray-900 dark:text-gray-100">.stopa.dk</span>
+                            </a>
+                            <div class="md:hidden -mr-2 flex items-center">
+                                <button @click="open = true" type="button" class="bg-white dark:bg-black rounded-md p-2 inline-flex items-center justify-center text-gray-400 dark:text-gray-100 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
+                                    <span class="sr-only">Open main menu</span>
+                                    <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="md:block md:ml-10 md:pr-4 md:space-x-8">
+                        <!-- We dont need a menu on desktop, give that scroll wheel a spin! -->
+                    </div>
+                </nav>
+            </div>
+
+            <!--
+            Mobile menu, show/hide based on menu open state.
+
+            Entering: "duration-150 ease-out"
+                From: "opacity-0 scale-95"
+                To: "opacity-100 scale-100"
+            Leaving: "duration-100 ease-in"
+                From: "opacity-100 scale-100"
+                To: "opacity-0 scale-95"
+            -->
+            <div class="absolute top-0 inset-x-0 pt-2 transition transform origin-top-right" x-show="open" @click.away="open = false">
+                <div class="shadow-md bg-white ring-1 ring-black ring-opacity-5 overflow-hidden">
+                    <div class="px-4 pt-4 flex items-center justify-start">
+                        <div>
+                            <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
+                                <span class="sr-only">dev.stopa.dk</span>
+                                <span class="text-indigo-600">dev</span><span class="text-gray-900 dark:text-gray-100">.stopa.dk</span>
+                            </a>
+                        </div>
+                        <div class="-mr-2">
+                            <button @click="open = false" type="button" class="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                                <span class="sr-only">Close main menu</span>
+                                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div role="menu" aria-orientation="vertical" aria-labelledby="main-menu">
+                        <div class="px-2 pt-2 pb-3 space-y-1" role="none">
+                            <a href="#about-me" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">About Me</a>
+                            <a href="#experience" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Experience</a>
+                            <a href="#recommendations" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50" role="menuitem">Recommendations</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+                <div class="sm:text-center lg:text-left">
+                    <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 dark:text-gray-100 sm:text-5xl md:text-6xl">
+                        <span class="block">Hi I'm Jess, master of</span>
+                        <span class="block text-indigo-600"><span class="typed-elememt"></span></span>
+                    </h1>
+                    <p class="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+                        This site will tell you more about who I am, what I do and what I have done. Professionally that is. Don't get too excited.
+                    </p>
+                    <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+                        <div class="rounded-md shadow">
+                            <a href="#about-me" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
+                                Show me more
+                            </a>
+                        </div>
+                        <div class="mt-3 sm:mt-0 sm:ml-3">
+                            <a href="https://www.youtube.com/watch?v=DLzxrzFCyOs" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                                I'm not supposed to be here
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
+        {{ asset url="/assets/profile.jpg" }}
+        <img class="h-96 w-full object-cover md:h-screen lg:w-full lg:h-full" src="{{ url }}" alt="Jess Stopa">
+        {{ /asset }}
+    </div>
+
+    <div class="fixed z-50 right-6 top-6 p-2">
+        <div class="flex justify-center items-center" x-data="{ theme: localStorage.theme || 'dark' }" x-init="() => $watch('theme', value => setTheme(theme))">
+            <div class="relative rounded-full w-12 h-6 transition duration-200 ease-linear" :class="[ theme === 'dark' ? 'bg-indigo-600' : 'bg-gray-300' ]">
+                <label for="theme" class="absolute left-0 bg-white border mb-2 w-6 h-6 rounded-full transition transform duration-100 ease-linear cursor-pointer border-gray-300 flex justify-center items-center" :class="[theme === 'dark' ? 'translate-x-full' : 'translate-x-0']">
+                    <template x-if="theme === 'light'">
+                        <svg class="h-4" :class="[ theme === 'lights' ? 'text-indigo-600' : 'text-gray-600' ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                    </template>
+                    <template x-if="theme === 'dark'">
+                        <svg class="h-4" :class="[ theme === 'darks' ? 'text-indigo-600' : 'text-gray-600' ]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                        </svg>
+                    </template>
+                </label>
+                <input type="checkbox" id="theme" name="theme" class="appearance-none w-full h-full active:outline-none focus:outline-none cursor-pointer" @click="theme === 'dark' ? theme = 'light' : theme = 'dark'">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mx-auto lg:min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-black dark:to-gray-900">
+    <div id="about-me" class="container mx-auto px-2 py-32 min-h-screen flex flex-col items-center">
+
+        <div class="flex flex-col justify-center items-center text-center text-lg w-full min-h-screen md:w-2/3 lg:w-1/2 mx-auto my-8">
+            <h2 class="font-title text-center text-3xl md:text-5xl">About me</h2>
+            {{ about_me }}
+        </div>
+    </div>
+</div>
+
+<div class="lg:min-h-screen bg-gray-100 dark:bg-gray-900">
+    <div class="container mx-auto px-12 py-32">
+        <h2 id="experience" class="font-title text-center text-3xl md:text-5xl">Experience</h2>
+    </div>
+    <div class="mx-auto container flex">
+        <div class="w-4/12 hidden lg:block relative">
+            <div class="lg:sticky left-0 top-1/3">
+                <nav>
+                    <ul class="subnav w-96 pl-12">
+                        {{ collection:experiences }}
+                        <li data-target="#section{{ count }}" class="h-8 flex items-center">
+                            <a href="#section{{ count }}" class="text-base font-light text-gray-700 dark:text-gray-300">{{ title }}</a>
+                        </li>
+                        {{ /collection:experiences }}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div class="w-full lg:w-8/12">
+            {{ collection:experiences }}
+            <section id="section{{ count }}" class="relative lg:min-h-screen mx-8 mb-24 flex flex-col justify-center">
+                <div class="mb-8">
+                    <div class="text-3xl font-title text-gray-700 dark:text-gray-300 mb-2">{{ title }}</div>
+                    <h3 class="text-base font-semibold text-indigo-600 uppercase">{{ role }}</h3>
+                    <p class="text-base text-gray-700 dark:text-gray-400">{{ from }} to {{ to }}</p>
+                </div>
+                <div class="w-full lg:w-2/3">{{ description }}</div>
+                {{ if last !== true }}
+                <div class="w-full hidden lg:block lg:w-2/3">
+                    <a href="#section{{ count | add:1 }}" class="block w-8 mx-auto mt-12 text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                    </a>
+                </div>
+                {{ /if }}
+            </section>
+            {{ /collection:experiences }}
+        </div>
+    </div>
+</div>
+
+<div class="mx-auto px-12 py-32 lg:min-h-screen bg-gradient-to-b from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-800">
+    <h2 id="recommendations" class="font-title text-center text-3xl md:text-5xl">Recommendations</h2>
+
+    <div class="container mx-auto">
+        <ul class="my-16 timeline">
+            {{ collection:recommendations }}
+            <li class="relative pb-24">
+                <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                    <div class="text-center">
+                        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <div class="text-indigo-600 text-center">{{ title }}</div>
+                    <div class="text-indigo-600 text-center">{{ company }}</div>
+                </div>
+                <div class="relative lg:ml-96">
+                    {{ text }}
+                </div>
+            </li>
+            {{ /collection:recommendations }}
+
+            <li class="relative pb-24">
+                <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                    <div class="text-center">
+                        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <div class="text-indigo-600 text-center">Martin Hyst</div>
+                </div>
+                <div class="relative lg:ml-96">
+                    <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                    <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                    <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                    <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                    <p>Jess has my highest recommendations.</p>
+                </div>
+            </li>
+            <li class="relative pb-24">
+                <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                    <div class="text-center">
+                        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <div class="text-indigo-600 text-center">Martin Hyst</div>
+                </div>
+                <div class="relative lg:ml-96">
+                    <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                    <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                    <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                    <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                    <p>Jess has my highest recommendations.</p>
+                </div>
+            </li>
+            <li class="relative pb-24">
+                <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                    <div class="text-center">
+                        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <div class="text-indigo-600 text-center">Martin Hyst</div>
+                </div>
+                <div class="relative lg:ml-96">
+                    <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                    <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                    <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                    <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                    <p>Jess has my highest recommendations.</p>
+                </div>
+            </li>
+            <li class="relative pb-24">
+                <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                    <div class="text-center">
+                        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <div class="text-indigo-600 text-center">Martin Hyst</div>
+                </div>
+                <div class="relative lg:ml-96">
+                    <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                    <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                    <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                    <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                    <p>Jess has my highest recommendations.</p>
+                </div>
+            </li>
+            <li class="relative pb-24">
+                <div class="mx-auto w-64 mb-8 lg:mb-0 lg:absolute lg:left-0">
+                    <div class="text-center">
+                        <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw" width="75" height="75" class="rounded-full mx-auto mb-4">
+                    </div>
+                    <div class="text-indigo-600 text-center">Martin Hyst</div>
+                </div>
+                <div class="relative lg:ml-96">
+                    <p>I had the pleasure of hiring Jess for a role as backend developer on my team at Cool Gray.</p>
+                    <p>Jess is a fixer and a doer. Give him a challenge or a problem and he buckles down and keeps on working on it, until he finds a solution - and continuously a great solution that is.</p>
+                    <p>He was the lead developer on what at the time was the largest digital project Cool Gray had ever undertaken and he solved every aspect with bravour.</p>
+                    <p>He always brings good mood to the team and he is great company both professionally and personally.</p>
+                    <p>Jess has my highest recommendations.</p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div class="mx-auto px-2 flex items-center justify-center bg-gray-200 dark:bg-gray-800">
+    <div class="text-center">
+        <p class="text-sm">Built with</p>
+        <div class="flex items-center">
+            <a href="https://statamic.com" title="Statamic">
+                <svg id="statamic-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 272.1" height="50">
+                    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="99.153" y1="65.596" x2="150.124" y2="205.639">
+                        <stop offset="0" stop-color="#da2fb6" />
+                        <stop offset="1" stop-color="#fe1876" />
+                    </linearGradient>
+                    <path d="M172.9 195.7c10.9 0 14.9-4.7 14.9-16.2v-22.4c0-10.7 5.2-16.8 10.2-19.7 1.5-.9 1.5-3 0-4-5.2-3.3-10.2-10.2-10.2-19.4V92c0-12.4-3.4-16-14.3-16H75.6c-10.9 0-14.3 3.6-14.3 16v22c0 9.2-5 16.1-10.2 19.4-1.5.9-1.5 3.1 0 4 5 2.8 10.2 8.9 10.2 19.7v22.4c0 11.5 4 16.2 14.9 16.2h96.7zm-48.6-20.5c-11.7 0-20.2-3.5-28.1-10.4-1.3-1.2-1.8-2.7-1.8-4.2 0-1.2.3-2.5 1.2-3.5L98 154c1.2-1.5 2.5-2.2 4-2.2 1.7 0 3.3.7 5 1.8 5.4 3.5 11.4 5.5 18.6 5.5 5.5 0 9.9-2.3 9.9-7 0-12.2-40.6-5.5-40.6-32.9 0-14.7 12-22.9 27.6-22.9 11 0 19.1 3.2 25.1 7 1.5 1 2.5 3 2.5 5 0 1.2-.3 2.3-1 3.3l-1.8 2.7c-1.3 1.8-2.8 2.7-4.7 2.7-1.3 0-2.7-.5-4.2-1.2-4.5-2.3-9.2-3.5-14.9-3.5-5.9 0-9.4 3.2-9.4 6.5 0 12.5 40.6 5.7 40.6 32.3 0 14.9-12 24.1-30.4 24.1z" fill="url(#a)" />
+                </svg>
+            </a>
+            <span class="text-gray-600 dark:text-gray-400 text-xl mr-2">+</span>
+            <a href="https://tailwindcss.com" title="tailwindcss">
+                <svg width="30" height="18" fill="#16BDCA">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M15 0c-4 0-6.5 2-7.5 6 1.5-2 3.25-2.75 5.25-2.25 1.141.285 1.957 1.113 2.86 2.03C17.08 7.271 18.782 9 22.5 9c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.141-.285-1.957-1.113-2.86-2.03C20.42 1.728 18.718 0 15 0zM7.5 9C3.5 9 1 11 0 15c1.5-2 3.25-2.75 5.25-2.25 1.141.285 1.957 1.113 2.86 2.03C9.58 16.271 11.282 18 15 18c4 0 6.5-2 7.5-6-1.5 2-3.25 2.75-5.25 2.25-1.141-.285-1.957-1.113-2.86-2.03C12.92 10.729 11.218 9 7.5 9z"></path>
+                </svg>
+            </a>
+            <span class="text-gray-600 dark:text-gray-400 text-xl mx-2">+</span>
+            <a href="https://github.com/alpinejs/alpine" title="Alpine.js">
+                <svg viewBox="0 0 45.116 22.806" xmlns="http://www.w3.org/2000/svg" height="20">
+                    <g opacity=".8">
+                        <path d="M33.71 0L11.207 22.693l.113.113h22.586l11.21-11.304z" fill="#d8dee9" />
+                        <path d="M11.405 0l22.578 22.769-.039.037H11.209L0 11.502z" fill="#8ac0cf" />
+                    </g>
+                </svg>
+            </a>
+        </div>
     </div>
 </div>

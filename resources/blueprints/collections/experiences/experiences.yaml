@@ -1,0 +1,69 @@
+title: Experience
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+          display: Company
+          listable: true
+          input_type: text
+          antlers: false
+      -
+        handle: role
+        field:
+          input_type: text
+          antlers: false
+          display: Role
+          type: text
+          icon: text
+          listable: true
+      -
+        handle: from
+        field:
+          input_type: text
+          antlers: false
+          display: From
+          type: text
+          icon: text
+          listable: true
+          width: 50
+      -
+        handle: to
+        field:
+          input_type: text
+          antlers: false
+          display: To
+          type: text
+          icon: text
+          listable: true
+          width: 50
+      -
+        handle: description
+        field:
+          type: markdown
+          display: Description
+          localizable: true
+          listable: hidden
+          restrict: false
+          automatic_line_breaks: true
+          automatic_links: false
+          escape_markup: false
+          smartypants: false
+          antlers: false
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required

@@ -1,0 +1,60 @@
+title: Recommendation
+sections:
+  main:
+    display: Main
+    fields:
+      -
+        handle: title
+        field:
+          type: text
+          required: true
+          validate:
+            - required
+          display: Name
+          listable: true
+          input_type: text
+          antlers: false
+      -
+        handle: company
+        field:
+          input_type: text
+          antlers: false
+          display: Company
+          type: text
+          icon: text
+          listable: true
+      -
+        handle: image
+        field:
+          mode: grid
+          restrict: false
+          allow_uploads: true
+          max_files: 1
+          display: Image
+          type: assets
+          icon: assets
+          listable: true
+      -
+        handle: text
+        field:
+          type: markdown
+          localizable: true
+          display: Text
+          listable: hidden
+          restrict: false
+          automatic_line_breaks: true
+          automatic_links: false
+          escape_markup: false
+          smartypants: false
+          antlers: false
+  sidebar:
+    display: Sidebar
+    fields:
+      -
+        handle: slug
+        field:
+          type: slug
+          required: true
+          localizable: true
+          validate:
+            - required

@@ -41,7 +41,6 @@ html {
 .subnav li {
     position: relative;
     transition: all 0.3s ease-out;
-    margin-bottom: 1em;
 }
 
 .subnav li.active {
@@ -52,59 +51,29 @@ html {
 .subnav li a {
     display: block;
     padding: 0;
-    transition: all 0.15s ease-out;
+    transition: all 0.3s ease-out;
 }
 
 .subnav li:after {
     content: "";
     display: block;
-    border-top: 2px solid black;
+    border-top: 2px solid #333;
     height: 250px;
     width: 20px;
     position: absolute;
     left: -30px;
     top: 15px;
+    transition: all 0.5s ease-out;
 }
 
 .dark .subnav li:after {
-    border-top: 2px solid white;
+    border-top: 2px solid #ccc;
 }
 
 .subnav li.active:after {
     width: 35px;
-    height: 400px;
-    top: 35px;
-}
-
-
-.subnav li a {
-    transition: height 0.3s ease-out;
 }
 
 .subnav li.active a {
-    @apply h-24 overflow-visible;
-}
-.subnav li.active a.double {
-    @apply h-40;
-}
-
-.nav__counter {
-    transition: all 0.15s ease-out;
-}
-.subnav li.active .nav__counter {
-    @apply text-2xl;
-}
-
-.nav__title {
-    transition: opacity 0.2s ease-out;
-}
-.subnav li.active .nav__title {
-    @apply opacity-100;
-}
-
-.nav__body {
-    transition: opacity 0.2s ease-out;
-}
-.subnav li.active .nav__body {
-    @apply opacity-100;
+    @apply text-2xl font-normal;
 }
