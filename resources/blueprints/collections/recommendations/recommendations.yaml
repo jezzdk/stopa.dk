@@ -14,6 +14,7 @@ sections:
           listable: true
           input_type: text
           antlers: false
+          width: 50
       -
         handle: company
         field:
@@ -23,6 +24,7 @@ sections:
           type: text
           icon: text
           listable: true
+          width: 50
       -
         handle: image
         field:
@@ -34,6 +36,17 @@ sections:
           type: assets
           icon: assets
           listable: true
+      -
+        handle: image_url
+        field:
+          input_type: url
+          antlers: false
+          display: 'Image URL'
+          type: text
+          icon: text
+          listable: hidden
+          validate:
+            - url
       -
         handle: text
         field:

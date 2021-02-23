@@ -34,3 +34,9 @@ window.setTheme = function(value) {
 
     localStorage.theme = value
 }
+
+console.log('Follow the whiteRabbit()...');
+
+window.whiteRabbit = function() {
+    return 'Ain\'t nobody got time for dat!';
+}

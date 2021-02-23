@@ -15,47 +15,57 @@ sections:
           input_type: text
           antlers: false
       -
-        handle: role
+        handle: entries
         field:
-          input_type: text
-          antlers: false
-          display: Role
-          type: text
-          icon: text
-          listable: true
-      -
-        handle: from
-        field:
-          input_type: text
-          antlers: false
-          display: From
-          type: text
-          icon: text
-          listable: true
-          width: 50
-      -
-        handle: to
-        field:
-          input_type: text
-          antlers: false
-          display: To
-          type: text
-          icon: text
-          listable: true
-          width: 50
-      -
-        handle: description
-        field:
-          type: markdown
-          display: Description
-          localizable: true
+          collapse: false
+          sets:
+            entry:
+              display: Entry
+              fields:
+                -
+                  handle: from
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: From
+                    type: text
+                    icon: text
+                    listable: hidden
+                -
+                  handle: to
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: To
+                    type: text
+                    icon: text
+                    listable: hidden
+                -
+                  handle: role
+                  field:
+                    input_type: text
+                    antlers: false
+                    display: Role
+                    type: text
+                    icon: text
+                    listable: hidden
+                -
+                  handle: description
+                  field:
+                    type: markdown
+                    display: Description
+                    localizable: true
+                    listable: hidden
+                    restrict: false
+                    automatic_line_breaks: true
+                    automatic_links: false
+                    escape_markup: false
+                    smartypants: false
+                    antlers: false
+          display: Entries
+          type: replicator
+          icon: replicator
           listable: hidden
-          restrict: false
-          automatic_line_breaks: true
-          automatic_links: false
-          escape_markup: false
-          smartypants: false
-          antlers: false
   sidebar:
     display: Sidebar
     fields:

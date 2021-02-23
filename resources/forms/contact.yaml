@@ -1,0 +1,8 @@
+title: Contact
+honeypot: honeypotz
+email:
+  -
+    to: jess@stopa.dk
+    from: jess@stopa.dk
+    reply_to: jess@stopa.dk
+    subject: 'You''ve been contacted!'
