@@ -7,7 +7,8 @@ img {
     will-change: filter;
 }
 
-html:not(.dark) img {
+html:not(.dark) img,
+html:not(.dark) .built-with svg {
     filter: grayscale(100%);
 }
 
