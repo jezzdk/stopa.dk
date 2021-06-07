@@ -8,7 +8,8 @@ text: |-
   He always brings good mood to the team and he is great company both professionally and personally.
   Jess has my highest recommendations."
 updated_by: 4e282409-ec36-425c-b1e7-fbbd720a97cd
-updated_at: 1614109660
+updated_at: 1623060780
 image_url: 'https://media-exp1.licdn.com/dms/image/C4D03AQGyYKgaJlgEwQ/profile-displayphoto-shrink_100_100/0/1516243816562?e=1619049600&v=beta&t=0xFZ_q1ovFlNFszU8zycQOrno8L5lSj5ayXFnYLz5uw'
+image: hyst.jpeg
 id: a972c304-adb4-49d4-82a3-ca5949977741
 ---

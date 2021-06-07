@@ -29,24 +29,14 @@ sections:
         handle: image
         field:
           mode: grid
+          container: assets
           restrict: false
           allow_uploads: true
-          max_files: 1
           display: Image
           type: assets
           icon: assets
-          listable: true
-      -
-        handle: image_url
-        field:
-          input_type: url
-          antlers: false
-          display: 'Image URL'
-          type: text
-          icon: text
           listable: hidden
-          validate:
-            - url
+          max_files: 1
       -
         handle: text
         field:

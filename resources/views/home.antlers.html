@@ -10,8 +10,8 @@
                     <div class="flex items-center flex-grow flex-shrink-0 lg:flex-grow-0">
                         <div class="flex items-center justify-start w-full md:w-auto">
                             <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
-                                <span class="sr-only">dev.stopa.dk</span>
-                                <span class="text-gray-900 dark:text-indigo-600">dev</span><span class="text-gray-500 dark:text-gray-100">.stopa.dk</span>
+                                <span class="sr-only">stopa development</span>
+                                <span class="text-gray-900 dark:text-indigo-600">stopa</span><span class="text-gray-500 dark:text-gray-100 md:hidden">dev</span><span class="hidden md:inline text-gray-500 dark:text-gray-100">development</span>
                             </a>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
         {{ /asset }}
     </div>
 
-    <div class="fixed z-40 right-6 top-6 flex items-center">
+    <div class="fixed z-40 right-6 top-5 flex items-center">
         <button @click="open = true" type="button" class="rounded-md p-2 inline-flex items-center justify-center text-gray-700 dark:text-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500 dark:focus:ring-indigo-500" id="main-menu" aria-haspopup="true">
             <span class="sr-only">Open main menu</span>
             <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -89,11 +89,10 @@
         x-transition:leave-start="opacity-100 scale-100"
         x-transition:leave-end="opacity-0 scale-95"
         >
-        <div class="shadow-md bg-white dark:bg-black p-4 ring-1 ring-black ring-opacity-5 overflow-hidden">
+        <div class="shadow-md bg-white dark:bg-black p-3 ring-1 ring-indigo-400 ring-opacity-5 overflow-hidden">
             <div class="px-4 pt-3 flex items-center justify-between">
                 <div>
                     <a href="#" class="uppercase font-extrabold font-title text-3xl md:text-5xl">
-                        <span class="sr-only">dev.stopa.dk</span>
                         <span class="text-gray-900 dark:text-indigo-600">menu</span>
                     </a>
                 </div>
@@ -191,11 +190,11 @@
                 {{ text }}
             </div>
             <div class="mx-auto w-64">
-                {{ if image_url }}
+                {{ image }}
                 <div class="text-center">
-                    <img src="{{ image_url }}" width="75" height="75" class="rounded-full mx-auto mb-2">
+                    <img src="{{ url }}" width="75" height="75" class="rounded-full mx-auto mb-2">
                 </div>
-                {{ /if }}
+                {{ /image }}
                 <div class="text-gray-900 dark:text-indigo-600 font-semibold text-center">{{ title }}</div>
                 <div class="text-gray-500 uppercase text-xs text-center">{{ company }}</div>
             </div>
